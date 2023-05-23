@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img width="100" src="docs/imgs/神君.png" alt="Werewolf Logo" />
+  <img width="300" src="docs/imgs/神君.png" alt="Werewolf Logo" />
 </div>
 
 # 景元伤害计算器
