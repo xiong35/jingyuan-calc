@@ -1,3 +1,4 @@
+import { Names } from "../../constants";
 import { Hint } from "../../constants/types";
 import { Character } from "./Character";
 
@@ -17,6 +18,9 @@ export class Game {
     this.characters.sort((a, b) => a.tickLeft - b.tickLeft);
   }
 
+  /**
+   * @returns 是否是回合结束
+   */
   tick() {
     // 找到第一个人
     const actCharacter = this.characters[0];
@@ -34,6 +38,16 @@ export class Game {
 
     // 前端刷新
     Game.refreshUI();
+
+    return actCharacter.name === Names.Rounder;
+  }
+
+  tick5Turns() {
+    let i = 5;
+    while (i) {
+      const isTurnOver = this.tick();
+      if (isTurnOver) i--;
+    }
   }
 
   increDmg(dmg: number) {

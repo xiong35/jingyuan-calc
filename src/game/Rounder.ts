@@ -1,3 +1,4 @@
+import { Names } from "../constants";
 import { Hint } from "../constants/types";
 import { Character } from "./base/Character";
 
@@ -16,7 +17,7 @@ export class Rounder extends Character {
     };
   }
   constructor() {
-    super("计时器", 0, 0, 0, 0, 100);
+    super(Names.Rounder, 0, 0, 0, 0, 100);
   }
 
   A() {

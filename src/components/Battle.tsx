@@ -25,6 +25,7 @@ export function Battle({ config }: { config: typeof baseConfig }) {
   }, []);
 
   const game = useMemo(() => {
+    console.log(config);
     const ting = new Ting(
       0,
       0,
@@ -53,7 +54,7 @@ export function Battle({ config }: { config: typeof baseConfig }) {
         <Button onClick={() => game.tick()} secondary raised>
           运行1步
         </Button>
-        <Button secondary raised>
+        <Button onClick={() => game.tick5Turns()} secondary raised>
           运行5回合
         </Button>
       </div>

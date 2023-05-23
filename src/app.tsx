@@ -32,8 +32,12 @@ export function App() {
   function setConfig(
     character: "jing" | "ting" | null,
     key: string,
-    value: any
+    value: any,
+    isNum = true
   ) {
+    if (isNum) {
+      value = Number(value);
+    }
     const newConfig = JSON.parse(JSON.stringify(config));
 
     if (character) {
@@ -75,7 +79,9 @@ export function App() {
                 停云
                 <Checkbox
                   checked={config.hasTing}
-                  onClick={() => setConfig(null, "hasTing", !config.hasTing)}
+                  onClick={() =>
+                    setConfig(null, "hasTing", !config.hasTing, false)
+                  }
                 />
               </div>
             </th>
@@ -99,7 +105,9 @@ export function App() {
               <input
                 type="number"
                 value={config.jing.atkBonus}
-                onChange={(e) => setConfig("jing", "atkBonus", e.target.value)}
+                onChange={(e) => {
+                  setConfig("jing", "atkBonus", e.target.value);
+                }}
               />
             </td>
             <td>/</td>
@@ -154,7 +162,9 @@ export function App() {
               <Checkbox
                 disabled={!config.hasTing}
                 checked={config.ting1Hun}
-                onClick={() => setConfig(null, "ting1Hun", !config.ting1Hun)}
+                onClick={() =>
+                  setConfig(null, "ting1Hun", !config.ting1Hun, false)
+                }
               />
             </td>
           </tr>
