@@ -7,3 +7,19 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+input {
+  width: 80%;
+  min-width: 2rem;
+}
+
+table td {
+  text-align: center;
+}
+
+/* flex center */
+.fc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -24,7 +24,7 @@ export abstract class Character {
 
   /** 增加能量并返回是否需要开大 */
   increCharge(charge: number) {
-    this.charge += charge * this.chargeEfficiency;
+    this.charge += charge * this.chargeRate;
 
     return this.charge >= this.chargeNeed * 0.95;
   }
@@ -34,7 +34,7 @@ export abstract class Character {
     protected baseATK: number,
     protected bonusATK: number,
     protected chargeNeed: number,
-    protected chargeEfficiency: number,
+    protected chargeRate: number,
     protected speed: number
   ) {}
 
