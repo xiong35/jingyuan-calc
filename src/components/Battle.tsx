@@ -34,6 +34,8 @@ export function Battle({ config }: { config: typeof baseConfig }) {
       config.ting.speed
     );
     const jing = new Jing(
+      config.hasTing,
+      config.ting1Hun,
       config.jing.atkBasic,
       config.jing.atkBonus,
       config.jing.chargeNeed,
@@ -43,7 +45,9 @@ export function Battle({ config }: { config: typeof baseConfig }) {
     const rounder = new Rounder();
     const shen = new Shen(jing);
 
-    const game = new Game([ting, jing, rounder, shen]);
+    const game = new Game(
+      config.hasTing ? [ting, jing, rounder, shen] : [jing, rounder, shen]
+    );
 
     return game;
   }, []);

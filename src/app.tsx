@@ -46,6 +46,7 @@ export function App() {
       newConfig[key] = value;
     }
     _setConfig(newConfig);
+    resetBattle();
   }
 
   const [key, setKey] = useState(0);

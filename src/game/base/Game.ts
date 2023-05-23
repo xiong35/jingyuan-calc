@@ -1,10 +1,13 @@
 import { Names } from "../../constants";
 import { Hint } from "../../constants/types";
+import { Rounder } from "../Rounder";
 import { Character } from "./Character";
 
 export class Game {
   totalDmg: number = 0;
   hints: Hint[] = [];
+
+  pendingHints: Hint[] = [];
 
   get queue(): Character[] {
     return this.characters.sort();
@@ -36,8 +39,16 @@ export class Game {
     this.hints.push(hint);
     this.sortByTick();
 
+    this.hints.push(...this.pendingHints.splice(0, this.pendingHints.length));
+
     // 前端刷新
     Game.refreshUI();
+
+    if (actCharacter instanceof Rounder && actCharacter.count > 233) {
+      alert("打到大道都磨灭了...");
+      window.location.reload();
+      throw new Error("打到大道都磨灭了...");
+    }
 
     return actCharacter.name === Names.Rounder;
   }
@@ -58,7 +69,7 @@ export class Game {
 
   /** 插入一个立即生效的Q的效果 */
   insertQ(hint: Hint, dmg: number) {
-    this.hints.push(hint);
+    this.pendingHints.push(hint);
 
     this.increDmg(dmg);
 

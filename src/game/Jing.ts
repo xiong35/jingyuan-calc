@@ -17,13 +17,16 @@ export class Jing extends Character {
   qDmg: number = 1.44;
   tingE: number = 0.35;
 
-  constructor(...args: Shift<ConstructorParameters<typeof Character>>) {
+  constructor(
+    hasTing: boolean,
+    private ting1Hun: boolean,
+    ...args: Shift<ConstructorParameters<typeof Character>>
+  ) {
     super(Names.Jing, ...args);
     this.buffs[BUFF.Ting1Hun] = 0;
     originSpeed = this.speed;
 
-    if (true) {
-      // TODO
+    if (hasTing) {
       this.bonusATK += this.tingE * this.baseATK;
     }
   }
@@ -63,7 +66,7 @@ export class Jing extends Character {
     };
 
     // 停云一命 TODO
-    if (true) {
+    if (this.ting1Hun) {
       // HACK: e 结束buff会被清除，所以加了两个，被清一个后面还能有
       this.buffs[BUFF.Ting1Hun] = 2;
       this.setSpeed(originSpeed + 20);
