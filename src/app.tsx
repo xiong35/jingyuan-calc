@@ -6,8 +6,9 @@ import "preact-material-components/Theme/style.css";
 import Checkbox from "preact-material-components/Checkbox";
 import "preact-material-components/Checkbox/style.css";
 import { useState } from "preact/hooks";
+import { Battle } from "./components/Battle";
 
-const baseConfig = {
+export const baseConfig = {
   jing: {
     atkBasic: 1022,
     atkBonus: 759,
@@ -43,9 +44,17 @@ export function App() {
     _setConfig(newConfig);
   }
 
+  const [key, setKey] = useState(0);
+  function resetBattle() {
+    setKey(Math.floor(Math.random() * 1000));
+  }
+
   return (
     <main>
       <h1>景元伤害计算器</h1>
+      <a href="https://github.com/xiong35/jingyuan-calc">
+        https://github.com/xiong35/jingyuan-calc
+      </a>
 
       <table>
         <colgroup>
@@ -59,7 +68,10 @@ export function App() {
             <th>属性/角色</th>
             <th>景元</th>
             <th>
-              <div className="fc">
+              <div
+                className="fc"
+                style={{ opacity: config.hasTing ? undefined : 0.5 }}
+              >
                 停云
                 <Checkbox
                   checked={config.hasTing}
@@ -150,12 +162,14 @@ export function App() {
       </table>
 
       <Button
-        onClick={() => console.log(config)}
+        onClick={() => resetBattle()}
         style={{ marginTop: "1rem" }}
         raised
       >
         开始计算
       </Button>
+
+      <Battle key={key} config={config}></Battle>
     </main>
   );
 }

@@ -13,12 +13,14 @@ export class Shen extends Character {
   lv = 3;
   aDmg = 0.53;
 
-  constructor(...args: Shift<ConstructorParameters<typeof Character>>) {
-    super(Names.Shen, ...args);
+  constructor(jing: Jing) {
+    super(Names.Shen, jing.baseATK, jing.bonusATK, 999, 0, 60);
   }
 
   _move(game: Game): Hint {
-    const dmg = this.A(game);
+    const dmg = Math.floor(this.A(game));
+
+    game.increDmg(dmg);
 
     const hint = {
       content: `${this.name} A 出 ${this.lv}段，造成了${dmg}点伤害`,

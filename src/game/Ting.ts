@@ -1,5 +1,5 @@
 import { A_ENERGY, E_ENERGY, Names } from "../constants";
-import { Hint } from "../constants/types";
+import { Hint, Shift } from "../constants/types";
 import { Jing } from "./Jing";
 import { Character } from "./base/Character";
 import { Game } from "./base/Game";
@@ -12,20 +12,24 @@ const style = {
  * 停云只是充能工具人
  */
 export class Ting extends Character {
-  lastAct: "a" | "e" = "a";
+  lastAct: "A" | "E" = "A";
+
+  constructor(...args: Shift<ConstructorParameters<typeof Character>>) {
+    super(Names.Ting, ...args);
+  }
 
   _move(game: Game): Hint {
-    if (this.lastAct === "a") {
+    if (this.lastAct === "A") {
       this.E(game);
-      this.lastAct = "e";
+      this.lastAct = "E";
     } else {
       this.A(game);
-      this.lastAct = "a";
+      this.lastAct = "A";
     }
 
     return {
-      content: "",
-      style: {},
+      content: `${this.name} ${this.lastAct}`,
+      style,
     };
   }
 

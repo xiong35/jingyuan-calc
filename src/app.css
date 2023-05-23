@@ -23,3 +23,12 @@ table td {
   align-items: center;
   justify-content: center;
 }
+
+p {
+  margin: 0.2rem;
+}
+
+.hints {
+  max-height: 300px;
+  overflow-y: auto;
+}

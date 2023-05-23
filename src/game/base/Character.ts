@@ -31,12 +31,14 @@ export abstract class Character {
 
   constructor(
     public name: string,
-    protected baseATK: number,
-    protected bonusATK: number,
-    protected chargeNeed: number,
-    protected chargeRate: number,
-    protected speed: number
-  ) {}
+    public baseATK: number,
+    public bonusATK: number,
+    public chargeNeed: number,
+    public chargeRate: number,
+    public speed: number
+  ) {
+    this.tickLeft = Math.round(ROUND_DIST / speed);
+  }
 
   abstract _move(game: Game): Hint;
 

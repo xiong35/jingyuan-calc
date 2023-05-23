@@ -29,12 +29,14 @@ export class Jing extends Character {
   }
 
   _move(game: Game): Hint {
-    const dmg = this.E(game);
+    const dmg = Math.floor(this.E(game));
 
     this.buffs[BUFF.Ting1Hun]!--;
     if (!this.buffs[BUFF.Ting1Hun]) {
       this.setSpeed(originSpeed);
     }
+
+    game.increDmg(dmg);
 
     return {
       content: this.name + " E 造成了 " + dmg + " 点伤害",
@@ -51,7 +53,9 @@ export class Jing extends Character {
 
     shen.setLv(shen.lv + 3);
 
-    const dmg = this.atk * this.qDmg * ENEMY_COUNT;
+    const dmg = Math.floor(this.atk * this.qDmg * ENEMY_COUNT);
+
+    game.increDmg(dmg);
 
     const hint: Hint = {
       content: `${this.name} Q 造成了 ${dmg} 点伤害`,
