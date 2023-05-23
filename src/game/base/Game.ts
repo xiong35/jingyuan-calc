@@ -40,7 +40,9 @@ export class Game {
     this.totalDmg += dmg;
   }
 
-  static refreshUI() {}
+  static refreshUI() {
+    // TODO
+  }
 
   /** 插入一个立即生效的Q的效果 */
   insertQ(hint: Hint, dmg: number) {

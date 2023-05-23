@@ -14,3 +14,4 @@ export enum BUFF {
 }
 
 export const E_ENERGY = 30;
+export const A_ENERGY = 20;
