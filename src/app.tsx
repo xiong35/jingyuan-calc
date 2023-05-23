@@ -94,7 +94,13 @@ export function App() {
               <input
                 type="number"
                 value={config.jing.atkBasic}
-                onChange={(e) => setConfig("jing", "atkBasic", e.target.value)}
+                onChange={(e) =>
+                  setConfig(
+                    "jing",
+                    "atkBasic",
+                    (e.target as HTMLInputElement).value
+                  )
+                }
               />
             </td>
             <td>/</td>
@@ -107,7 +113,11 @@ export function App() {
                 type="number"
                 value={config.jing.atkBonus}
                 onChange={(e) => {
-                  setConfig("jing", "atkBonus", e.target.value);
+                  setConfig(
+                    "jing",
+                    "atkBonus",
+                    (e.target as HTMLInputElement).value
+                  );
                 }}
               />
             </td>
@@ -121,7 +131,11 @@ export function App() {
                 type="number"
                 value={config.jing.chargeRate}
                 onChange={(e) =>
-                  setConfig("jing", "chargeRate", e.target.value)
+                  setConfig(
+                    "jing",
+                    "chargeRate",
+                    (e.target as HTMLInputElement).value
+                  )
                 }
               />
             </td>
@@ -131,7 +145,11 @@ export function App() {
                 type="number"
                 value={config.ting.chargeRate}
                 onChange={(e) =>
-                  setConfig("ting", "chargeRate", e.target.value)
+                  setConfig(
+                    "ting",
+                    "chargeRate",
+                    (e.target as HTMLInputElement).value
+                  )
                 }
               />
             </td>
@@ -143,7 +161,13 @@ export function App() {
               <input
                 type="number"
                 value={config.jing.speed}
-                onChange={(e) => setConfig("jing", "speed", e.target.value)}
+                onChange={(e) =>
+                  setConfig(
+                    "jing",
+                    "speed",
+                    (e.target as HTMLInputElement).value
+                  )
+                }
               />
             </td>
             <td>
@@ -151,7 +175,13 @@ export function App() {
                 disabled={!config.hasTing}
                 type="number"
                 value={config.ting.speed}
-                onChange={(e) => setConfig("ting", "speed", e.target.value)}
+                onChange={(e) =>
+                  setConfig(
+                    "ting",
+                    "speed",
+                    (e.target as HTMLInputElement).value
+                  )
+                }
               />
             </td>
           </tr>
